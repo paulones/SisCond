@@ -1,6 +1,6 @@
-var Login = function() {
+var Login = function () {
 
-    var handleLogin = function() {
+    var handleLogin = function () {
         $('.login-form').validate({
             errorElement: 'span', //default input error message container
             errorClass: 'help-block', // default input error message class
@@ -25,27 +25,27 @@ var Login = function() {
                     required: "Digite uma senha."
                 }
             },
-            invalidHandler: function(event, validator) { //display error alert on form submit   
+            invalidHandler: function (event, validator) { //display error alert on form submit   
                 $('.alert-danger', $('.login-form')).show();
                 $('.login-error').hide();
                 $('.login-success').hide();
             },
-            highlight: function(element) { // hightlight error inputs
+            highlight: function (element) { // hightlight error inputs
                 $(element)
                         .closest('.form-group').addClass('has-error'); // set error class to the control group
             },
-            success: function(label) {
+            success: function (label) {
                 label.closest('.form-group').removeClass('has-error');
                 label.remove();
             },
-            errorPlacement: function(error, element) {
+            errorPlacement: function (error, element) {
                 error.insertAfter(element.closest('.input-icon'));
             },
-            submitHandler: function(form) {
+            submitHandler: function (form) {
             }
         });
 
-        $('.button-submit-login').click(function(e) {
+        $('.button-submit-login').click(function (e) {
             if ($('.login-form').validate().form()) {
                 $('#password').val(CryptoJS.MD5($('#password').val()));
                 $('.submit-login').click();
@@ -53,7 +53,7 @@ var Login = function() {
             return false;
         });
 
-        $('.login-form input').keypress(function(e) {
+        $('.login-form input').keypress(function (e) {
             if (e.which == 13) {
                 if ($('.login-form').validate().form()) {
                     $('#password').val(CryptoJS.MD5($('#password').val()));
@@ -64,7 +64,7 @@ var Login = function() {
         });
     }
 
-    var handleForgetPassword = function() {
+    var handleForgetPassword = function () {
         $('.forget-form').validate({
             errorElement: 'span', //default input error message container
             errorClass: 'help-block', // default input error message class
@@ -81,32 +81,32 @@ var Login = function() {
                     required: "E-mail necessário."
                 }
             },
-            invalidHandler: function(event, validator) { //display error alert on form submit   
+            invalidHandler: function (event, validator) { //display error alert on form submit   
 
             },
-            highlight: function(element) { // hightlight error inputs
+            highlight: function (element) { // hightlight error inputs
                 $(element)
                         .closest('.form-group').addClass('has-error'); // set error class to the control group
             },
-            success: function(label) {
+            success: function (label) {
                 label.closest('.form-group').removeClass('has-error');
                 label.remove();
             },
-            errorPlacement: function(error, element) {
+            errorPlacement: function (error, element) {
                 error.insertAfter(element.closest('.input-icon'));
             },
-            submitHandler: function(form) {
+            submitHandler: function (form) {
             }
         });
 
-        $('#submit-email').click(function(e) {
+        $('#submit-email').click(function (e) {
             if ($('.forget-form').validate().form()) {
                 $(".submit-emailrecover").click();
             }
             return false;
         });
 
-        $('.forget-form input').keypress(function(e) {
+        $('.forget-form input').keypress(function (e) {
             if (e.which == 13) {
                 if ($('.forget-form').validate().form()) {
                     $(".submit-emailrecover").click();
@@ -115,18 +115,18 @@ var Login = function() {
             }
         });
 
-        jQuery('#forget-password').click(function() {
+        jQuery('#forget-password').click(function () {
             jQuery('.login-form').hide();
             jQuery('.forget-form').show();
         });
 
-        jQuery('#back-btn').click(function() {
+        jQuery('#back-btn').click(function () {
             jQuery('.login-form').show();
             jQuery('.forget-form').hide();
         });
     }
 
-    var handleRegister = function() {
+    var handleRegister = function () {
         $('.register-form').validate({
             errorElement: 'span', //default input error message container
             errorClass: 'help-block', // default input error message class
@@ -159,18 +159,18 @@ var Login = function() {
                     required: "Por favor, esteja de acordo com os Termos de Serviço e Política de Privacidade."
                 }
             },
-            invalidHandler: function(event, validator) { //display error alert on form submit   
+            invalidHandler: function (event, validator) { //display error alert on form submit   
 
             },
-            highlight: function(element) { // hightlight error inputs
+            highlight: function (element) { // hightlight error inputs
                 $(element)
                         .closest('.form-group').addClass('has-error'); // set error class to the control group
             },
-            success: function(label) {
+            success: function (label) {
                 label.closest('.form-group').removeClass('has-error');
                 label.remove();
             },
-            errorPlacement: function(error, element) {
+            errorPlacement: function (error, element) {
                 if (element.attr("name") == "tnc") { // insert checkbox errors after the container                  
                     error.insertAfter($('#register_tnc_error'));
                 } else if (element.closest('.input-icon').size() === 1) {
@@ -179,11 +179,11 @@ var Login = function() {
                     error.insertAfter(element);
                 }
             },
-            submitHandler: function(form) {
+            submitHandler: function (form) {
             }
         });
 
-        $('#register-submit-btn').click(function() {
+        $('#register-submit-btn').click(function () {
             if ($('.register-form').validate().form()) {
                 $('#register_password').val(CryptoJS.MD5($('#register_password').val()));
                 $('#rpassword').val(CryptoJS.MD5($('#rpassword').val()));
@@ -192,7 +192,7 @@ var Login = function() {
             return false;
         })
 
-        $('.register-form input').keypress(function(e) {
+        $('.register-form input').keypress(function (e) {
             if (e.which == 13) {
                 if ($('.register-form').validate().form()) {
                     $('#register_password').val(CryptoJS.MD5($('#register_password').val()));
@@ -203,20 +203,20 @@ var Login = function() {
             }
         });
 
-        jQuery('#register-btn').click(function() {
+        jQuery('#register-btn').click(function () {
             jQuery('.login-form').hide();
             jQuery('.licensing-form').hide();
             jQuery('.register-form').show();
         });
 
-        jQuery('#register-back-btn').click(function() {
+        jQuery('#register-back-btn').click(function () {
             jQuery('.login-form').show();
             jQuery('.licensing-form').hide();
             jQuery('.register-form').hide();
         });
     }
 
-    var handleLicensing = function() {
+    var handleLicensing = function () {
         $('.licensing-form').validate({
             errorElement: 'span', //default input error message container
             errorClass: 'help-block', // default input error message class
@@ -231,32 +231,32 @@ var Login = function() {
                     required: "Digite uma chave v&aacute;lida."
                 }
             },
-            invalidHandler: function(event, validator) { //display error alert on form submit   
+            invalidHandler: function (event, validator) { //display error alert on form submit   
 
             },
-            highlight: function(element) { // hightlight error inputs
+            highlight: function (element) { // hightlight error inputs
                 $(element)
                         .closest('.form-group').addClass('has-error'); // set error class to the control group
             },
-            success: function(label) {
+            success: function (label) {
                 label.closest('.form-group').removeClass('has-error');
                 label.remove();
             },
-            errorPlacement: function(error, element) {
+            errorPlacement: function (error, element) {
                 error.insertAfter(element.closest('.input-icon'));
             },
-            submitHandler: function(form) {
+            submitHandler: function (form) {
             }
         });
 
-        $('#licensing-submit-btn').click(function(e) {
+        $('#licensing-submit-btn').click(function (e) {
             if ($('.licensing-form').validate().form()) {
                 $('.submit-licensing').click();
             }
             return false;
         });
 
-        $('.licensing-form input').keypress(function(e) {
+        $('.licensing-form input').keypress(function (e) {
             if (e.which == 13) {
                 if ($('.licensing-form').validate().form()) {
                     $('.submit-licensing').click();
@@ -265,14 +265,14 @@ var Login = function() {
             }
         });
 
-        jQuery('#licensing-back-btn').click(function() {
+        jQuery('#licensing-back-btn').click(function () {
             jQuery('.login-form').show();
             jQuery('.licensing-form').hide();
             jQuery('.register-form').hide();
         });
     }
 
-    var handlePass = function() {
+    var handlePass = function () {
         $('.pass-form').validate({
             errorElement: 'span', //default input error message container
             errorClass: 'help-block', // default input error message class
@@ -288,28 +288,28 @@ var Login = function() {
             },
             messages: {// custom messages for radio buttons and checkboxes
             },
-            invalidHandler: function(event, validator) { //display error alert on form submit   
+            invalidHandler: function (event, validator) { //display error alert on form submit   
             },
-            highlight: function(element) { // hightlight error inputs
+            highlight: function (element) { // hightlight error inputs
                 $(element)
                         .closest('.form-group').addClass('has-error'); // set error class to the control group
             },
-            success: function(label) {
+            success: function (label) {
                 label.closest('.form-group').removeClass('has-error');
                 label.remove();
             },
-            errorPlacement: function(error, element) {
+            errorPlacement: function (error, element) {
                 if (element.closest('.input-icon').size() === 1) {
                     error.insertAfter(element.closest('.input-icon'));
                 } else {
                     error.insertAfter(element);
                 }
             },
-            submitHandler: function(form) {
+            submitHandler: function (form) {
             }
         });
 
-        $('#pass-submit-btn').click(function(e) {
+        $('#pass-submit-btn').click(function (e) {
             if ($('.pass-form').validate().form()) {
                 $('#new_password').val(CryptoJS.MD5($('#new_password').val()));
                 $('#rnew_password').val(CryptoJS.MD5($('#rnew_password').val()));
@@ -318,7 +318,7 @@ var Login = function() {
             return false;
         });
 
-        $('.pass-form input').keypress(function(e) {
+        $('.pass-form input').keypress(function (e) {
             if (e.which == 13) {
                 if ($('.pass-form').validate().form()) {
                     $('#new_password').val(CryptoJS.MD5($('#new_password').val()));
@@ -329,7 +329,7 @@ var Login = function() {
             }
         });
 
-        jQuery('#pass-back-btn').click(function() {
+        jQuery('#pass-back-btn').click(function () {
             jQuery('.login-form').show();
             jQuery('.pass-form').hide();
         });
@@ -337,7 +337,7 @@ var Login = function() {
 
     return {
         //main function to initiate the module
-        init: function() {
+        init: function () {
 
             if (Modernizr.localstorage) {
                 localStorage.clear();
@@ -354,7 +354,7 @@ var Login = function() {
             $('.cpf').mask("999.999.999-99");
 
             $.post("ping.html");
-            window.setInterval(function() {
+            window.setInterval(function () {
                 $.post("ping.html");
             }, 1500000);
 
@@ -418,8 +418,13 @@ var Login = function() {
                 fade: 1000,
                 duration: 8000
             });
+
+            var date = new Date()
+            var year = date.getYear();
+            if (year < 1000) {
+                year += 1900;
+            }
+            $(".copyright span").text(year);
         }
-
     };
-
 }();
